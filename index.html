@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Estudos - Plataforma Educacional com Inteligência Artificial</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/ai-education-icon.png" alt="IA Estudos" class="logo-img">
+                <h1>IA Estudos</h1>
+            </div>
+            <nav class="nav">
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Aprenda com Inteligência Artificial</h2>
+                    <p>Explore diferentes tipos de IA para potencializar seus estudos. Tire dúvidas, dialogue e crie imagens educativas.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/ai-brain.jpg" alt="Cérebro IA" class="brain-img">
+                </div>
+            </section>
+
+            <!-- AI Selection Tabs -->
+            <section class="ai-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="questoes">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Chat para Questões</span>
+                        <small>Tire suas dúvidas rapidamente</small>
+                    </button>
+                    <button class="tab-btn" data-tab="dialogos">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat para Diálogos</span>
+                        <small>Explicações detalhadas</small>
+                    </button>
+                    <button class="tab-btn" data-tab="imagens">
+                        <i class="fas fa-image"></i>
+                        <span>Geração de Imagens</span>
+                        <small>Crie imagens educativas</small>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Chat para Questões -->
+                    <div class="tab-panel active" id="questoes">
+                        <div class="chat-container">
+                            <div class="chat-header">
+                                <h3><i class="fas fa-question-circle"></i> Chat para Questões</h3>
+                                <p>Faça perguntas diretas e obtenha respostas rápidas e precisas</p>
+                            </div>
+                            <div class="chat-messages" id="questoes-messages">
+                                <div class="message bot-message">
+                                    <div class="message-avatar">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="message-content">
+                                        <p>Olá! Sou sua IA especializada em responder questões. Faça uma pergunta sobre qualquer assunto que você está estudando!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <div class="input-group">
+                                    <input type="text" id="questoes-input" placeholder="Digite sua pergunta aqui..." maxlength="500">
+                                    <button id="questoes-send" class="send-btn">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                                <div class="input-info">
+                                    <span class="char-count">0/500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="history-sidebar">
+                            <h4><i class="fas fa-history"></i> Histórico</h4>
+                            <div class="history-list" id="questoes-history">
+                                <p class="no-history">Nenhuma conversa ainda</p>
+                            </div>
+                            <button class="clear-history" id="questoes-clear">
+                                <i class="fas fa-trash"></i> Limpar Histórico
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat para Diálogos -->
+                    <div class="tab-panel" id="dialogos">
+                        <div class="chat-container">
+                            <div class="chat-header">
+                                <h3><i class="fas fa-comments"></i> Chat para Diálogos e Explicações</h3>
+                                <p>Tenha conversas detalhadas e obtenha explicações aprofundadas</p>
+                            </div>
+                            <div class="chat-messages" id="dialogos-messages">
+                                <div class="message bot-message">
+                                    <div class="message-avatar">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="message-content">
+                                        <p>Olá! Sou sua IA especializada em diálogos educacionais. Posso explicar conceitos complexos, dar exemplos práticos e manter uma conversa detalhada sobre seus estudos!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <div class="input-group">
+                                    <input type="text" id="dialogos-input" placeholder="Inicie uma conversa sobre o que você quer aprender..." maxlength="500">
+                                    <button id="dialogos-send" class="send-btn">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                                <div class="input-info">
+                                    <span class="char-count">0/500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="history-sidebar">
+                            <h4><i class="fas fa-history"></i> Histórico</h4>
+                            <div class="history-list" id="dialogos-history">
+                                <p class="no-history">Nenhuma conversa ainda</p>
+                            </div>
+                            <button class="clear-history" id="dialogos-clear">
+                                <i class="fas fa-trash"></i> Limpar Histórico
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Geração de Imagens -->
+                    <div class="tab-panel" id="imagens">
+                        <div class="image-container">
+                            <div class="image-header">
+                                <h3><i class="fas fa-image"></i> IA de Geração de Imagens</h3>
+                                <p>Crie imagens educativas para ilustrar seus estudos</p>
+                            </div>
+                            <div class="image-input-section">
+                                <div class="input-group">
+                                    <textarea id="imagens-input" placeholder="Descreva a imagem que você quer criar para seus estudos..." maxlength="300" rows="3"></textarea>
+                                    <button id="imagens-generate" class="generate-btn">
+                                        <i class="fas fa-magic"></i> Gerar Imagem
+                                    </button>
+                                </div>
+                                <div class="input-info">
+                                    <span class="char-count">0/300</span>
+                                    <small>Seja específico: "Diagrama do sistema solar com planetas nomeados" funciona melhor que "espaço"</small>
+                                </div>
+                            </div>
+                            <div class="image-result" id="image-result">
+                                <div class="placeholder-image">
+                                    <i class="fas fa-image"></i>
+                                    <p>Suas imagens geradas aparecerão aqui</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="history-sidebar">
+                            <h4><i class="fas fa-history"></i> Imagens Criadas</h4>
+                            <div class="history-list" id="imagens-history">
+                                <p class="no-history">Nenhuma imagem criada ainda</p>
+                            </div>
+                            <button class="clear-history" id="imagens-clear">
+                                <i class="fas fa-trash"></i> Limpar Histórico
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 IA Estudos - Plataforma Educacional com Inteligência Artificial</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processando...</p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+

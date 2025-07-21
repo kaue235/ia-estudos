@@ -188,23 +188,41 @@ class AIStudyPlatform {
 
     // Gerar resposta da IA baseada no tipo e mensagem
     generateAIResponse(type, message) {
-        const responses = {
-            questoes: [
-                `Excelente pergunta! Baseado no que você perguntou sobre "${message.substring(0, 50)}...", posso explicar que este é um conceito fundamental. Vou quebrar isso em partes menores para facilitar o entendimento.`,
-                `Ótima questão! Para responder sobre "${message.substring(0, 50)}...", é importante primeiro entender o contexto. Deixe-me explicar de forma clara e objetiva.`,
-                `Interessante! Sua pergunta sobre "${message.substring(0, 50)}..." toca em um ponto muito importante. Vou dar uma resposta direta e prática.`,
-                `Perfeito! Essa é uma dúvida comum sobre "${message.substring(0, 50)}...". Vou explicar de forma simples e com exemplos práticos.`
-            ],
-            dialogos: [
-                `Que tópico fascinante! Vamos explorar "${message.substring(0, 50)}..." de forma mais aprofundada. Este assunto tem várias camadas interessantes que podemos discutir. Primeiro, é importante entender o contexto histórico e depois podemos mergulhar nos detalhes técnicos. O que você gostaria de saber especificamente?`,
-                `Adorei sua abordagem sobre "${message.substring(0, 50)}..."! Este é um tema que permite uma discussão rica e detalhada. Podemos começar pelos fundamentos e depois expandir para aplicações práticas. Há algum aspecto específico que desperta mais sua curiosidade?`,
-                `Excelente escolha de tópico! "${message.substring(0, 50)}..." é um assunto que oferece muitas oportunidades de aprendizado. Vamos construir um entendimento sólido juntos, começando pelos conceitos básicos e evoluindo para ideias mais complexas. Que tal começarmos com uma visão geral?`,
-                `Muito interessante! O tema "${message.substring(0, 50)}..." é realmente envolvente e tem muitas facetas para explorarmos. Posso oferecer diferentes perspectivas e exemplos práticos. Vamos fazer desta uma conversa educativa e produtiva!`
-            ]
-        };
+        const lowerCaseMessage = message.toLowerCase();
+        let response = '';
 
-        const typeResponses = responses[type] || responses.questoes;
-        return typeResponses[Math.floor(Math.random() * typeResponses.length)];
+        if (type === 'questoes') {
+            if (lowerCaseMessage.includes('inteligência artificial') || lowerCaseMessage.includes('ia')) {
+                response = 'A Inteligência Artificial é um campo vasto que permite máquinas simularem a inteligência humana. Ela abrange aprendizado de máquina, processamento de linguagem natural e visão computacional. Qual aspecto da IA você gostaria de explorar mais?';
+            } else if (lowerCaseMessage.includes('aprender') || lowerCaseMessage.includes('estudar')) {
+                response = 'Para aprender de forma eficaz, sugiro dividir o conteúdo em partes menores, fazer anotações e praticar ativamente. Posso te ajudar a encontrar recursos ou explicar conceitos específicos.';
+            } else if (lowerCaseMessage.includes('dúvida') || lowerCaseMessage.includes('pergunta')) {
+                response = 'Claro! Pode me dizer qual é a sua dúvida? Estou aqui para ajudar a esclarecer qualquer conceito ou questão que você tenha.';
+            } else {
+                const genericResponses = [
+                    `Excelente pergunta! Para responder sobre "${message.substring(0, 50)}...", é importante primeiro entender o contexto. Deixe-me explicar de forma clara e objetiva.`,
+                    `Ótima questão! Sua pergunta sobre "${message.substring(0, 50)}..." toca em um ponto muito importante. Vou dar uma resposta direta e prática.`,
+                    `Interessante! Essa é uma dúvida comum. Vou explicar de forma simples e com exemplos práticos.`
+                ];
+                response = genericResponses[Math.floor(Math.random() * genericResponses.length)];
+            }
+        } else if (type === 'dialogos') {
+            if (lowerCaseMessage.includes('machine learning') || lowerCaseMessage.includes('aprendizado de máquina')) {
+                response = 'Machine Learning é um subcampo da IA que permite sistemas aprenderem com dados sem serem explicitamente programados. Existem vários tipos, como aprendizado supervisionado, não supervisionado e por reforço. Quer que eu detalhe algum deles?';
+            } else if (lowerCaseMessage.includes('redes neurais') || lowerCaseMessage.includes('deep learning')) {
+                response = 'Redes Neurais e Deep Learning são inspiradas no cérebro humano e são a base para muitas das IAs mais avançadas de hoje, como reconhecimento de imagem e voz. Podemos conversar sobre como elas funcionam ou suas aplicações.';
+            } else if (lowerCaseMessage.includes('processamento de linguagem natural') || lowerCaseMessage.includes('nlp')) {
+                response = 'Processamento de Linguagem Natural (PLN) é a área da IA que foca na interação entre computadores e a linguagem humana. É o que permite que IAs como eu entendam e gerem texto. Qual aspecto do PLN te interessa mais?';
+            } else {
+                const genericResponses = [
+                    `Que tópico fascinante! Vamos explorar "${message.substring(0, 50)}..." de forma mais aprofundada. Este assunto tem várias camadas interessantes que podemos discutir. O que você gostaria de saber especificamente?`,
+                    `Adorei sua abordagem sobre "${message.substring(0, 50)}..."! Este é um tema que permite uma discussão rica e detalhada. Podemos começar pelos fundamentos e depois expandir para aplicações práticas.`,
+                    `Excelente escolha de tópico! "${message.substring(0, 50)}..." é um assunto que oferece muitas oportunidades de aprendizado. Vamos construir um entendimento sólido juntos.`
+                ];
+                response = genericResponses[Math.floor(Math.random() * genericResponses.length)];
+            }
+        }
+        return response;
     }
 
     // Gerar imagem (simulação)

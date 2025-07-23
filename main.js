@@ -189,35 +189,45 @@ class AIStudyPlatform {
     // Gerar resposta da IA baseada no tipo e mensagem
     generateAIResponse(type, message) {
         const lowerCaseMessage = message.toLowerCase();
-        let response = '';
+        let response = "";
 
         if (type === 'questoes') {
             if (lowerCaseMessage.includes('inteligência artificial') || lowerCaseMessage.includes('ia')) {
-                response = 'A Inteligência Artificial é um campo vasto que permite máquinas simularem a inteligência humana. Ela abrange aprendizado de máquina, processamento de linguagem natural e visão computacional. Qual aspecto da IA você gostaria de explorar mais?';
+                response = 'A Inteligência Artificial (IA) é um campo da ciência da computação que se dedica a criar sistemas capazes de simular a inteligência humana. Isso inclui aprender, raciocinar, resolver problemas, perceber e até mesmo compreender a linguagem. Ela se manifesta em diversas áreas, como aprendizado de máquina, processamento de linguagem natural e visão computacional. Por exemplo, quando seu celular reconhece seu rosto ou quando um assistente virtual responde às suas perguntas, a IA está em ação. Qual aspecto específico da IA você gostaria de aprofundar?';
             } else if (lowerCaseMessage.includes('aprender') || lowerCaseMessage.includes('estudar')) {
-                response = 'Para aprender de forma eficaz, sugiro dividir o conteúdo em partes menores, fazer anotações e praticar ativamente. Posso te ajudar a encontrar recursos ou explicar conceitos específicos.';
+                response = 'Para otimizar seu aprendizado, sugiro algumas estratégias: 1. **Divida o conteúdo:** Quebre tópicos complexos em partes menores e mais gerenciáveis. 2. **Pratique ativamente:** Em vez de apenas ler, tente resolver problemas, fazer resumos ou explicar o conteúdo para outra pessoa. 3. **Revise regularmente:** A repetição espaçada ajuda a fixar o conhecimento. 4. **Use recursos variados:** Livros, vídeos, artigos e, claro, IAs como esta para tirar dúvidas. Posso te ajudar a encontrar recursos ou explicar conceitos específicos que você esteja estudando.';
             } else if (lowerCaseMessage.includes('dúvida') || lowerCaseMessage.includes('pergunta')) {
-                response = 'Claro! Pode me dizer qual é a sua dúvida? Estou aqui para ajudar a esclarecer qualquer conceito ou questão que você tenha.';
+                response = 'Claro! Pode me dizer qual é a sua dúvida? Estou aqui para ajudar a esclarecer qualquer conceito ou questão que você tenha. Por favor, seja o mais específico possível para que eu possa fornecer a melhor explicação.';
+            } else if (lowerCaseMessage.includes('história da ia')) {
+                response = 'A história da IA é fascinante! Começou com conceitos teóricos na década de 1940 e 50, com figuras como Alan Turing. O termo "Inteligência Artificial" foi cunhado em 1956. Houve períodos de "inverno da IA" devido a expectativas não atendidas, mas avanços em poder computacional e dados ressuscitaram o campo, levando ao boom atual do aprendizado de máquina e redes neurais. Quer saber mais sobre alguma fase específica?';
+            } else if (lowerCaseMessage.includes('algoritmo')) {
+                response = 'Um algoritmo é uma sequência finita de instruções bem definidas e não ambíguas, que são executadas para resolver um problema ou realizar uma tarefa. Pense nele como uma receita: cada passo deve ser claro e levar a um resultado previsível. Em IA, algoritmos são a base para o aprendizado de máquina, permitindo que os sistemas processem dados e tomem decisões. Existem muitos tipos, como algoritmos de classificação, regressão e agrupamento. Gostaria de um exemplo de algum tipo específico?';
             } else {
                 const genericResponses = [
                     `Excelente pergunta! Para responder sobre "${message.substring(0, 50)}...", é importante primeiro entender o contexto. Deixe-me explicar de forma clara e objetiva.`,
                     `Ótima questão! Sua pergunta sobre "${message.substring(0, 50)}..." toca em um ponto muito importante. Vou dar uma resposta direta e prática.`,
-                    `Interessante! Essa é uma dúvida comum. Vou explicar de forma simples e com exemplos práticos.`
+                    `Interessante! Essa é uma dúvida comum. Vou explicar de forma simples e com exemplos práticos.`,
+                    `Perfeito! Essa é uma dúvida comum sobre "${message.substring(0, 50)}...". Vou explicar de forma simples e com exemplos práticos.`
                 ];
                 response = genericResponses[Math.floor(Math.random() * genericResponses.length)];
             }
         } else if (type === 'dialogos') {
             if (lowerCaseMessage.includes('machine learning') || lowerCaseMessage.includes('aprendizado de máquina')) {
-                response = 'Machine Learning é um subcampo da IA que permite sistemas aprenderem com dados sem serem explicitamente programados. Existem vários tipos, como aprendizado supervisionado, não supervisionado e por reforço. Quer que eu detalhe algum deles?';
+                response = 'Machine Learning (Aprendizado de Máquina) é um subcampo da Inteligência Artificial que se concentra no desenvolvimento de algoritmos que permitem aos computadores aprender com dados, sem serem explicitamente programados para cada tarefa. Em vez de seguir instruções fixas, eles identificam padrões e fazem previsões ou decisões. Existem três tipos principais: **Aprendizado Supervisionado** (com dados rotulados), **Não Supervisionado** (com dados não rotulados) e **Aprendizado por Reforço** (aprende por tentativa e erro). Qual desses tipos você gostaria de explorar mais a fundo?';
             } else if (lowerCaseMessage.includes('redes neurais') || lowerCaseMessage.includes('deep learning')) {
-                response = 'Redes Neurais e Deep Learning são inspiradas no cérebro humano e são a base para muitas das IAs mais avançadas de hoje, como reconhecimento de imagem e voz. Podemos conversar sobre como elas funcionam ou suas aplicações.';
+                response = 'Redes Neurais Artificiais são modelos computacionais inspirados na estrutura e funcionamento do cérebro humano. Elas são compostas por camadas de "neurônios" interconectados que processam informações. O Deep Learning (Aprendizado Profundo) é um tipo de Machine Learning que utiliza redes neurais com muitas camadas (daí o "profundo"), permitindo que aprendam representações complexas de dados, como imagens, sons e textos. Elas são a base para avanços em reconhecimento de fala, visão computacional e processamento de linguagem natural. Quer um exemplo de como elas funcionam?';
             } else if (lowerCaseMessage.includes('processamento de linguagem natural') || lowerCaseMessage.includes('nlp')) {
-                response = 'Processamento de Linguagem Natural (PLN) é a área da IA que foca na interação entre computadores e a linguagem humana. É o que permite que IAs como eu entendam e gerem texto. Qual aspecto do PLN te interessa mais?';
+                response = 'Processamento de Linguagem Natural (PLN ou NLP) é a área da Inteligência Artificial que se dedica a permitir que computadores compreendam, interpretem e gerem a linguagem humana de forma significativa. É o que possibilita assistentes virtuais, tradutores automáticos e análise de sentimentos em textos. O PLN envolve técnicas como tokenização, análise sintática e semântica. Qual aplicação do PLN mais te interessa?';
+            } else if (lowerCaseMessage.includes('ética na ia') || lowerCaseMessage.includes('viés')) {
+                response = 'A ética na IA é um tópico crucial e complexo. Envolve questões sobre como garantir que os sistemas de IA sejam justos, transparentes e responsáveis. O viés (bias) é um grande desafio, pois os modelos de IA podem aprender e amplificar preconceitos presentes nos dados de treinamento, levando a decisões discriminatórias. Discutir e implementar diretrizes éticas é fundamental para o desenvolvimento de IAs benéficas para a sociedade. Que tipo de dilema ético na IA você gostaria de discutir?';
+            } else if (lowerCaseMessage.includes('futuro da ia')) {
+                response = 'O futuro da IA é um tema de muita especulação e inovação! Espera-se que a IA continue a transformar indústrias, desde a medicina e transporte até a educação e entretenimento. Veremos avanços em IA generativa, robótica mais autônoma e sistemas de IA mais integrados ao nosso dia a dia. No entanto, também há debates sobre os impactos sociais, econômicos e éticos. O que você imagina para o futuro da IA?';
             } else {
                 const genericResponses = [
                     `Que tópico fascinante! Vamos explorar "${message.substring(0, 50)}..." de forma mais aprofundada. Este assunto tem várias camadas interessantes que podemos discutir. O que você gostaria de saber especificamente?`,
                     `Adorei sua abordagem sobre "${message.substring(0, 50)}..."! Este é um tema que permite uma discussão rica e detalhada. Podemos começar pelos fundamentos e depois expandir para aplicações práticas.`,
-                    `Excelente escolha de tópico! "${message.substring(0, 50)}..." é um assunto que oferece muitas oportunidades de aprendizado. Vamos construir um entendimento sólido juntos.`
+                    `Excelente escolha de tópico! "${message.substring(0, 50)}..." é um assunto que oferece muitas oportunidades de aprendizado. Vamos construir um entendimento sólido juntos.`,
+                    `Muito interessante! O tema "${message.substring(0, 50)}..." é realmente envolvente e tem muitas facetas para explorarmos. Posso oferecer diferentes perspectivas e exemplos práticos. Vamos fazer desta uma conversa educativa e produtiva!`
                 ];
                 response = genericResponses[Math.floor(Math.random() * genericResponses.length)];
             }
